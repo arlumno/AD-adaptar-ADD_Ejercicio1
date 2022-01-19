@@ -5,38 +5,37 @@ import java.sql.*;
 
 /**
  *
- * @author 
+ * @author
  */
 public class AAD_Ejercicio1 {
 
-
     public static void main(String[] args) throws IOException {
-        
+
         //Declaracion de conectores
         /*Connection conexion = null;*/
         Statement sentencia = null;
         ResultSet rstAux = null;
-        
+
         BufferedReader lee = new BufferedReader(new InputStreamReader(System.in));
         int cont = 0, op = 0;
-        
-        //Declaracion de driver y url
-        String driver= "com.mysql.jdbc.Driver";       
-        String url= "jdbc:mysql://localhost:3307/alumnos?user=root&password=usbw&serverTimezone=UTC";
-//        String url= "jdbc:mysql://localhost:3307/";
 
-        /*No es necesario desde la ultima versión
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException ex) {
-            System.out.println("No se encontro el driver" + driver);
-            System.exit(1);
-        }*/
-        try {
+        //Declaracion de driver y url
+        // **** elegir de 1 a 4. ****
+        do{
             
-            Connection conexion = DriverManager.getConnection(url);
-//            Connection conexion = DriverManager.getConnection(url, "root", "usbw");;
-            sentencia = conexion.createStatement();
+        System.out.println("Elige el tipo de conexion:"
+                + "\n1. sqlite"
+                + "\n2. derby"
+                + "\n3. h2"
+                + "\n4. hsqldb");
+        op = Integer.parseInt(lee.readLine());
+        
+        }while(op > 4 && op < 1);
+        System.out.println("Elegida opción: " + op );
+        ConexionBD.setTypeConnection(op);
+
+        try {
+            sentencia = ConexionBD.getStatement();
         } catch (SQLException e) {
             System.out.println("No hay ningún Driver registrado que reconozca la URL especificada");
             System.out.println(e.toString());
@@ -45,10 +44,9 @@ public class AAD_Ejercicio1 {
             System.out.println("\n\t Se ha producido algún otro error.");
             System.exit(3);
         }
-        CrearTablas.crearTabla(sentencia);
-        
-        
-        do{
+        CrearTablas.crearTabla(sentencia, ConexionBD.getTypeConnection());
+
+        do {
             System.out.println("*****************************");
             System.out.println("MENU");
             System.out.println("1. Inserción de nuevas filas");
@@ -56,8 +54,8 @@ public class AAD_Ejercicio1 {
             System.out.println("3. Modificar filas");
             System.out.println("4. Realizar consultas");
             System.out.println("0. Salir");
-            op=Integer.parseInt(lee.readLine());
-            switch(op){
+            op = Integer.parseInt(lee.readLine());
+            switch (op) {
                 case 0:
                     System.out.println("SALIENDO");
                     break;
@@ -74,7 +72,7 @@ public class AAD_Ejercicio1 {
                     Consultar.consulta(sentencia, rstAux, lee);
                     break;
             }
-        }while(op!=0);
+        } while (op != 0);
 
     }
 

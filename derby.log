@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Jan 19 17:31:26 CET 2022:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-017e-732d-c56c-00000f51c8d0 
+on database directory Z:\ArGit\AD\AD-adaptar-ADD_Ejercicio1\src\aad_ejercicio1\db\librosApache with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@5acf9800 
+Loaded from file:/Z:/ArGit/AD/AD-adaptar-ADD_Ejercicio1/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=16.0.2+7-67
+user.dir=Z:\ArGit\AD\AD-adaptar-ADD_Ejercicio1
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
