@@ -77,10 +77,8 @@ public class CrearTablas {
                             + "titulo VARCHAR(30) NOT NULL, "
                             + "precio INT NOT NULL, "
                             + "autor VARCHAR(30) NOT NULL, "
-                            + "PRIMARY KEY (idLibro)"
+                            + "PRIMARY KEY (idLibro),"
                             + " FOREIGN KEY (autor) references AUTORES(dniAutor)"
-                            + " ON DELETE CASCADE"
-                            + " ON UPDATE CASCADE"
                             + " )");
                     break;
             }
